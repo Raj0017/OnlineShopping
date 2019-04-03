@@ -1,11 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 
 <spring:url var="css" value="/resources/css"></spring:url>
 <spring:url var="js" value="/resources/js"></spring:url>
 <spring:url var="images" value="/resources/images"></spring:url>
+
+
+
+
+
+
 
 <c:set var="contextRoot" value="${pageContext.request.contextPath}"></c:set>
 
@@ -13,6 +20,8 @@
 <html lang="en">
 
 <head>
+
+
 
 <meta charset="utf-8">
 <meta name="viewport"
@@ -30,23 +39,35 @@
 
 
 <!-- Bootstrap core CSS -->
-<link href="${css}/bootstrap.min.css" rel="stylesheet">
+ 
+<link href="${css}/Bootswatch-them.css" rel="stylesheet"/>
+  <link href="${css}/bootstrap.min.css" rel="stylesheet"/> 
+  
+  <!-- BootsWatch for Project Theme -->
+
+
+ <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />  
 
 
 
-<!-- BootsWatch for Project Theme -->
-<link href="${css}/Bootswatch-them.css" rel="stylesheet">
+
 
  <!-- data TAbles for Bootstrap-->
-<link href="${css}/dataTables.bootstrap.css" rel="stylesheet">
+<link href="${css}/dataTables.bootstrap.css" rel="stylesheet"/>
 
 
 <!-- data TAbles for Bootstrap-->
-<link href="${css}/dataTables.bootstrap4.css" rel="stylesheet">
+ 
+
+ <link href="${css}/dataTables.bootstrap4.css" rel="stylesheet"/>
+
+<link href="${css}/jquery.dataTables.css" rel="stylesheet"/>
+<%-- <link href="${css}/bootstrap.css" rel="stylesheet"/> --%>
+
 
 
 <!-- Custom styles for this template -->
-<link href="${css}/myapp.css" rel="stylesheet">
+<link href="${css}/myapp.css" rel="stylesheet"/>
 
 </head>
 
@@ -84,6 +105,14 @@
 				<%@include file="listProducts.jsp"%>
 			</c:if>
 			
+			<!-- Single Product display   -->
+			
+			<c:if test="${userClickShowProduct==true}">
+			     
+				<%@include file="singleProduct.jsp"%>
+			</c:if>
+			
+			
 			
 		</div>
 
@@ -106,10 +135,18 @@
          <!-- DataTables bootstrap plugings -->
         <script src="${js}/dataTables.bootstrap4.js"></script>
         
+         
+        
+      
+        
         
         
 		<!-- Self Coded of java Script -->
-		<script src="${js}/myapp.js">
+		 <script src="${js}/myapp.js">
+			
+		
+		
+		/* <script src="${js}/h.js"> */
 			
 		</script>
 	</div>

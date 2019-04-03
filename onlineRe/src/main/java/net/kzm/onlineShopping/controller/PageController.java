@@ -4,17 +4,21 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import net.kzm.onlineShopping.exception.ProductNotFoundException;
 import net.kzm.shopingBackend.dao.CategoryDAO;
+import net.kzm.shopingBackend.dao.ProductDAO;
 import net.kzm.shopingBackend.dto.Category;
+import net.kzm.shopingBackend.dto.Product;
 
 @Controller
 public class PageController {
 	@Autowired
 	private CategoryDAO categoryDao;
-	
-	
+	@Autowired
+	private ProductDAO productDAO;
 	
 	
 	@RequestMapping(value= {"/","/home","/index"})
@@ -51,6 +55,7 @@ public class PageController {
 		return mv;
 	}
 	@RequestMapping(value= {"/show/all/products"})
+	@ResponseBody
 	public ModelAndView showAllProducts()
 	{
 		ModelAndView mv=new ModelAndView("page");
@@ -59,6 +64,7 @@ public class PageController {
 		mv.addObject("userClickAllProducts",true);
 		return mv;
 	}
+	
 	@RequestMapping(value= {"/show/category/{id}/products"})
 	public ModelAndView showCategoryProducts(@PathVariable("id") int id)
 	{
@@ -78,4 +84,23 @@ public class PageController {
 		mv.addObject("userClickCategoryProducts",true);
 		return mv;
 	}
-}
+	
+	
+	//Single product viewing
+	@RequestMapping(value= {"/show/{id}/product"})
+	public ModelAndView singleProduct(@PathVariable("id") int id)throws ProductNotFoundException{
+		ModelAndView mv=new ModelAndView("page");
+		Product product=productDAO.get(id);
+		
+		if(product==null) throw new ProductNotFoundException();
+		
+		product.setViews(product.getViews()+1);
+		productDAO.update(product);
+		mv.addObject("title",product.getName());
+		mv.addObject("product",product);
+		mv.addObject("userClickShowProduct",true);
+		return mv;
+	}
+	
+
+	}
