@@ -23,7 +23,7 @@ public class ProductTestCase {
 		productDAO=(ProductDAO)context.getBean("productDAO");
 	}
 	
-	/*@Test
+	@Test
 	public void testCRUDProduct()
 	{
 		product=new Product();
@@ -42,13 +42,14 @@ public class ProductTestCase {
 		product.setName("Lenovo");
 		assertEquals("Something went wrong while updating the existing record",true,productDAO.update(product));
         
-		assertEquals("Something went wrong while deleting the exitsting record",true,productDAO.delete(product));
+		/*assertEquals("Something went wrong while deleting the exitsting record",true,productDAO.delete(product));
 	
 		assertEquals("Something went worn while fetching  the list of product",15,productDAO.list().size());
-	}
+	*/
+		}
 	
-*/	
-	@Test
+
+	/*@Test
 	public void testListActiveProducts()
 	{
 		assertEquals("Something went worn while fetching  the list of product",9,productDAO.listActiveProducts().size());	
@@ -65,6 +66,6 @@ public class ProductTestCase {
 	{
 		assertEquals("Something went worn while fetching  the list of product",9,productDAO.getLatestActiveProducts(9).size());	
 		
-	}
+	}*/
 
 }

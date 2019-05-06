@@ -25,7 +25,7 @@ public class HibernateConfig {
 			private final static String DATABASE_USERNAME="root";
 			private final static String DATABASE_PASSWORD="mysql";
 			
-			@Bean
+			@Bean("dataSource")
 			public  DataSource getDataSource()
 			{
 				BasicDataSource dataSource=new BasicDataSource();
@@ -50,6 +50,9 @@ public class HibernateConfig {
 				prop.put("hibernate.dialect",DATABASE_DIALECT);
 	            prop.put("hibernate.show_sql","true");
 	            prop.put("hibernate.format_sql","true");
+	            
+	            
+	            prop.put("hibernate.hbm2ddl.auto","update");
 				return prop;
 			}
 			
