@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -19,6 +20,30 @@ public class PageController {
 	private CategoryDAO categoryDao;
 	@Autowired
 	private ProductDAO productDAO;
+	
+	//login 
+	
+	@RequestMapping(value= {"/login"})
+	public ModelAndView login(@RequestParam(name="error", required=false)String error)
+	{
+		ModelAndView mv=new ModelAndView("login");
+		
+		if(error!=null) {
+			mv.addObject("message","invalid username and password");
+		}
+		//mv.addObject("greeting","Welcome to spring MVC RajMohan");
+		mv.addObject("title","Login");
+		
+		
+		
+		return mv;
+		
+		
+	}
+	
+	
+	
+	
 	
 	
 	@RequestMapping(value= {"/","/home","/index"})
@@ -99,6 +124,17 @@ public class PageController {
 		mv.addObject("title",product.getName());
 		mv.addObject("product",product);
 		mv.addObject("userClickShowProduct",true);
+		return mv;
+	}
+	
+	
+	@RequestMapping(value= {"/register"})
+	public ModelAndView register() {
+		ModelAndView mv=new ModelAndView("page");
+	
+		mv.addObject("title","about us");
+
+
 		return mv;
 	}
 	
