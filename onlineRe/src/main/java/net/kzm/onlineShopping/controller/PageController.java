@@ -132,7 +132,7 @@ public class PageController {
 	public ModelAndView register() {
 		ModelAndView mv=new ModelAndView("page");
 	
-		mv.addObject("title","about us");
+		mv.addObject("title","Register User");
 
 
 		return mv;
