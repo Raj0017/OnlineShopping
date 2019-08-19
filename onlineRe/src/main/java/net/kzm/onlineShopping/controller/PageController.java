@@ -29,7 +29,7 @@ public class PageController {
 		ModelAndView mv=new ModelAndView("login");
 		
 		if(error!=null) {
-			mv.addObject("message","invalid username and password");
+			mv.addObject("message","invalid usernameAndPassword");
 		}
 		//mv.addObject("greeting","Welcome to spring MVC RajMohan");
 		mv.addObject("title","Login");
