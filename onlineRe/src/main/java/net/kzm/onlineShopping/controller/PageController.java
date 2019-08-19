@@ -64,7 +64,7 @@ public class PageController {
 	{
 		ModelAndView mv=new ModelAndView("page");
 		//mv.addObject("greeting","Welcome to spring MVC RajMohan");
-		mv.addObject("title","About Us");
+		mv.addObject("title","AboutUs");
 		mv.addObject("userClickAbout",true);
 		
 		return mv;
